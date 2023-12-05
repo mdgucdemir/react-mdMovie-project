@@ -21,14 +21,22 @@ const CastList = (props) => {
         {casts.map((item, i) => (
           <SwiperSlide key={i}>
             <div className="casts_item">
-              <div
-                className="casts_item_img"
-                style={{
-                  backgroundImage: `url(${apiConfig.w500Image(
-                    item.profile_path
-                  )})`,
-                }}
-              ></div>
+              {item.profile_path ? (
+                <div
+                  className="casts_item_img"
+                  style={{
+                    backgroundImage: `url(${apiConfig.w500Image(
+                      item.profile_path
+                    )})`,
+                  }}
+                ></div>
+              ) : (
+                <div
+                  className="casts_item_img"
+                  style={{ backgroundImage: `url(${NoPoster})` }}
+                ></div>
+              )}
+
               <p className="casts_item_name">{item.name}</p>
             </div>
           </SwiperSlide>

@@ -43,7 +43,7 @@
 
     &_poster {
         flex: 1;
-        @include tablet {
+        @include mobile {
             display: none;
         }
         &_img {

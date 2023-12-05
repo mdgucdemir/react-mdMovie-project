@@ -1,6 +1,7 @@
 import React from "react";
 import apiConfig from "../api/apiConfig";
 import { useNavigate } from "react-router-dom";
+import NoPoster from "../../assets/no-poster.png";
 
 import "./movieCard.scss";
 
@@ -19,7 +20,11 @@ const MovieCard = (props) => {
       onClick={() => navigate(`/${mediaType}/${item.id}`)}
     >
       <div className="poster-block">
-        <img src={bg} alt="img" className="poster-img" />
+        {item.poster_path || item.profile_path ? (
+          <img src={bg} alt="img" className="poster-img" />
+        ) : (
+          <img src={NoPoster} alt="poster-img" />
+        )}
       </div>
       <div className="text-block">
         <h2 className="title">{item.title || item.original_name}</h2>

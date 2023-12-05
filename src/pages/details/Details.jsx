@@ -9,6 +9,9 @@ const Details = () => {
   const { mediaType, id } = useParams();
   const [item, setItem] = useState(null);
 
+  console.log(item);
+  console.log(mediaType);
+
   useEffect(() => {
     fetchDetails(mediaType, id).then((data) => setItem(data));
   }, [mediaType, id]);
@@ -31,7 +34,7 @@ const Details = () => {
                 className="movie-content_poster_img"
                 style={{
                   backgroundImage: `url(${apiConfig.originalImage(
-                    item.poster_path || item.backdrop_path
+                    item.poster_path || item.backdrop_path || item.profile_path
                   )})`,
                 }}
               ></div>
@@ -46,14 +49,18 @@ const Details = () => {
                     </span>
                   ))}
               </div>
-              <p className="overview">{item.overview}</p>
+              <p className="overview">{item.overview || item.biography}</p>
               <div className="watchlist-button"></div>
 
               <div className="cast">
-                <div className="section_header">
-                  <h2>Cast</h2>
-                </div>
-                <CastList id={item.id} />
+                {mediaType === "person" ? (
+                  <div></div>
+                ) : (
+                  <div className="section_header">
+                    <h2>Cast</h2>
+                    <CastList id={item.id} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
