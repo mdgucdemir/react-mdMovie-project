@@ -27,7 +27,7 @@ const Discover = () => {
     fetchApi(media, mediaType).then((data) => setMovie(data));
   }, [media, mediaType]);
 
-  console.log(movie);
+  // console.log(movie);
 
   return (
     <div className="discover">
@@ -35,7 +35,7 @@ const Discover = () => {
         <div className="discover-header">{header_type + " " + header}</div>
         <div className="grid-container">
           {movie.map((item, i) => (
-            <div className="grid-item">
+            <div className="grid-item" key={i}>
               <MovieCard key={i} item={item} mediaType={media} />
             </div>
           ))}

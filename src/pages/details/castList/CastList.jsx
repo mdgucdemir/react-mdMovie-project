@@ -3,6 +3,7 @@ import { fetchCredits } from "../../../components/api/fetchApi";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import apiConfig from "../../../components/api/apiConfig";
+import NoPoster from "../../../assets/no-poster.png";
 
 const CastList = (props) => {
   const [casts, setCasts] = useState([]);
