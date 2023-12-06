@@ -7,6 +7,7 @@ import AiringTodayTv from "../../components/moviesAndTvShow/tvShows/AiringTodayT
 import Popular from "../../components/moviesAndTvShow/tvShows/Popular";
 import TopRatedTv from "../../components/moviesAndTvShow/tvShows/TopRated";
 import OnTheAir from "../../components/moviesAndTvShow/tvShows/OnTheAir";
+import PopularPerson from "../../components/moviesAndTvShow/person/PopularPerson";
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <Popular />
       <TopRatedTv />
       <OnTheAir />
+      <PopularPerson />
     </div>
   );
 };

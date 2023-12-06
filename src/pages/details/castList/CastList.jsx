@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { fetchCredits } from "../../../components/api/fetchApi";
-import { useParams } from "react-router-dom";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate, useParams } from "react-router-dom";
 import apiConfig from "../../../components/api/apiConfig";
 import NoPoster from "../../../assets/no-poster.png";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const CastList = (props) => {
   const [casts, setCasts] = useState([]);
   const { mediaType } = useParams();
+  const navigate = useNavigate();
 
   // console.log(casts);
 
@@ -20,7 +21,10 @@ const CastList = (props) => {
       <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
         {casts.map((item, i) => (
           <SwiperSlide key={i}>
-            <div className="casts_item">
+            <div
+              className="casts_item"
+              onClick={() => navigate(`/person/${item.id}`)}
+            >
               {item.profile_path ? (
                 <div
                   className="casts_item_img"
