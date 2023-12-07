@@ -19,7 +19,7 @@ const CastList = (props) => {
   return (
     <div className="casts">
       <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
-        {casts.map((item, i) => (
+        {casts?.map((item, i) => (
           <SwiperSlide key={i}>
             <div
               className="casts_item"
