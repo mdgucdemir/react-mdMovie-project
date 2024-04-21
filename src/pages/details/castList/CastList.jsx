@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import apiConfig from "../../../components/api/apiConfig";
 import NoPoster from "../../../assets/no-poster.png";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 
 const CastList = (props) => {
   const [casts, setCasts] = useState([]);
@@ -18,7 +20,13 @@ const CastList = (props) => {
 
   return (
     <div className="casts">
-      <Swiper grabCursor={true} spaceBetween={10} slidesPerView={"auto"}>
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        grabCursor={true}
+        spaceBetween={10}
+        slidesPerView={"auto"}
+      >
         {casts?.map((item, i) => (
           <SwiperSlide key={i}>
             <div

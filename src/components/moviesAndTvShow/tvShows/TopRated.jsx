@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { fetchApi } from "../../api/fetchApi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from "../../movieCard/MovieCard";
-import "../style.scss";
 import { useNavigate } from "react-router-dom";
+import { Navigation } from "swiper/modules";
+
+import "../style.scss";
+import "swiper/css/navigation";
 
 const TopRated = () => {
   const [tvShows, setTvShows] = useState([]);
@@ -23,7 +26,14 @@ const TopRated = () => {
           View More
         </div>
       </div>
-      <Swiper grabCursor={true} spaceBetween={20} slidesPerView={"auto"}>
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        grabCursor={true}
+        spaceBetween={20}
+        slidesPerView={"auto"}
+        className="swiperNonBanner"
+      >
         {tvShows.map((item, i) => (
           <SwiperSlide key={i}>
             <MovieCard item={item} mediaType={"tv"} />

@@ -5,6 +5,9 @@ import NoPoster from "../../assets/no-poster.png";
 
 import "./movieCard.scss";
 
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 const MovieCard = (props) => {
   const item = props.item;
   const mediaType = props.mediaType;
@@ -21,7 +24,12 @@ const MovieCard = (props) => {
     >
       <div className="poster-block">
         {item.poster_path || item.profile_path ? (
-          <img src={bg} alt="img" className="poster-img" />
+          <LazyLoadImage
+            src={bg}
+            alt="img"
+            className="poster-img"
+            effect="blur"
+          />
         ) : (
           <img src={NoPoster} alt="poster-img" />
         )}

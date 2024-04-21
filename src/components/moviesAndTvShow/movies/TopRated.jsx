@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { fetchApi } from "../../api/fetchApi";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import MovieCard from "../../movieCard/MovieCard";
 
 import "../style.scss";
+import "swiper/css/navigation";
 import { useNavigate } from "react-router-dom";
 
 const TopRated = () => {
@@ -24,7 +26,14 @@ const TopRated = () => {
           View More
         </div>
       </div>
-      <Swiper grabCursor={true} spaceBetween={20} slidesPerView={"auto"}>
+      <Swiper
+        modules={[Navigation]}
+        grabCursor={true}
+        spaceBetween={20}
+        slidesPerView={"auto"}
+        navigation
+        className="swiperNonBanner"
+      >
         {movie.map((item, i) => (
           <SwiperSlide key={i}>
             <MovieCard item={item} mediaType={"movie"} />

@@ -1,7 +1,35 @@
-.movie-card {
-    cursor: pointer;
+@use "../../sass/" as *;
 
-    :hover {
-        opacity: 0.7;
+.movie-card {
+  cursor: pointer;
+
+  .poster-img {
+    width: 260px;
+    height: 380px;
+
+    @include l-tablet {
+      width: 200px;
+      height: 300px;
+      object-fit: contain;
     }
+
+    @include tablet {
+      width: 200px;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    @include mobile {
+      width: 105px;
+      height: 195px;
+      object-fit: cover;
+    }
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+  &:hover {
+    opacity: 0.5;
+  }
 }

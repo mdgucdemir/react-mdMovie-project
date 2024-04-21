@@ -3,8 +3,10 @@ import { fetchApi } from "../../api/fetchApi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from "../../movieCard/MovieCard";
 import { useNavigate } from "react-router-dom";
+import { Navigation } from "swiper/modules";
 
 import "../style.scss";
+import "swiper/css/navigation";
 
 const UpComing = () => {
   const [movie, setMovies] = useState([]);
@@ -24,7 +26,14 @@ const UpComing = () => {
           View More
         </div>
       </div>
-      <Swiper grabCursor={true} spaceBetween={20} slidesPerView={"auto"}>
+      <Swiper
+        modules={[Navigation]}
+        grabCursor={true}
+        spaceBetween={20}
+        slidesPerView={"auto"}
+        navigation
+        className="swiperNonBanner"
+      >
         {movie.map((item, i) => (
           <SwiperSlide key={i}>
             <MovieCard item={item} mediaType={"movie"} />

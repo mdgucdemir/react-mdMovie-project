@@ -3,9 +3,11 @@ import "./banner.scss";
 import apiCongig from "../api/apiConfig";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { fetchApi } from "../api/fetchApi";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Banner = () => {
   const [movieItems, setMovieItems] = useState([]);
@@ -17,11 +19,13 @@ const Banner = () => {
   return (
     <div className="banner-slide">
       <Swiper
-        modules={[Autoplay]}
+        modules={[Autoplay, Navigation, Pagination]}
         grabCursor={true}
         spaceBetween={0}
         slidesPerView={1}
         autoplay={{ delay: 3000 }}
+        navigation
+        pagination={{ clickable: true }}
       >
         {movieItems?.map((item, i) => (
           <SwiperSlide key={i}>

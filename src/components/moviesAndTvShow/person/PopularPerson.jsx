@@ -3,6 +3,9 @@ import { fetchApi } from "../../api/fetchApi";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MovieCard from "../../movieCard/MovieCard";
 import { useNavigate } from "react-router-dom";
+import { Navigation } from "swiper/modules";
+
+import "swiper/css/navigation";
 import "../style.scss";
 
 const PopularPerson = () => {
@@ -26,9 +29,14 @@ const PopularPerson = () => {
           View More
         </div>
       </div>
-      <Swiper grabCursor={true} spaceBetween={20} slidesPerView={"auto"}>
-        {/* person?.map kullanarak undefined olmasi durumunda kontrol saglayip cokmesi engelleyebilir */}
-        {/* Daha fazla bilgi icin: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining */}
+      <Swiper
+        modules={[Navigation]}
+        navigation
+        grabCursor={true}
+        spaceBetween={20}
+        slidesPerView={"auto"}
+        className="swiperNonBanner"
+      >
         {person.map((item, i) => (
           <SwiperSlide key={i}>
             <MovieCard item={item} mediaType={"person"} />
