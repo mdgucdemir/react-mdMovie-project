@@ -4,8 +4,7 @@ import dayjs from "dayjs";
 import NoPoster from "../../../assets/no-poster.png";
 
 const PersonDetail = ({ item }) => {
-  // console.log(item.profile_path);
-  item.biography = item.biography.replace(/\n/g, "<br />");
+  
   return (
     <div className="detail-page">
       {item && (
@@ -62,9 +61,14 @@ const PersonDetail = ({ item }) => {
                   ? ": " + item.place_of_birth
                   : ": Sorry, I have No Data"}
               </p>
-              <p className="overview">
-                {item.biography ? item.biography : "Sorry, I have No Data"}
-              </p>
+              <p
+                className="overview"
+                dangerouslySetInnerHTML={{
+                  __html: item.biography
+                    ? item.biography.replace(/\n/g, "<br />")
+                    : "Sorry, I have No Data",
+                }}
+              />
             </div>
           </div>
         </>
