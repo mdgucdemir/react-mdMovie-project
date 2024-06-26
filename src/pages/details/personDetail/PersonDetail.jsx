@@ -5,6 +5,7 @@ import NoPoster from "../../../assets/no-poster.png";
 
 const PersonDetail = ({ item }) => {
   // console.log(item.profile_path);
+  item.biography = item.biography.replace(/\n/g, "<br />")
   return (
     <div className="detail-page">
       {item && (
